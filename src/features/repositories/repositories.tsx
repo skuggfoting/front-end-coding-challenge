@@ -14,6 +14,9 @@ export const RepositoriesQuery = graphql`
           id
           description
           name
+          issues {
+            totalCount
+          }
         }
       }
     }

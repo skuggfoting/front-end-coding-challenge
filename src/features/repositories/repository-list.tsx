@@ -21,6 +21,7 @@ export const RepositoryList = (props: RepositoryListProps) => {
           key={node?.id}
           description={node?.description}
           name={node?.name}
+          totalCount={node?.issues?.totalCount}
         />
       ))}
     </Grid>
