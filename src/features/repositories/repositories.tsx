@@ -14,7 +14,7 @@ export const RepositoriesQuery = graphql`
           id
           description
           name
-          issues {
+          issues(filterBy: { states: OPEN }) {
             totalCount
           }
         }
