@@ -10,7 +10,6 @@ import { IssuesList } from "../features/issues/issues-list";
 export const IssuesQuery = graphql`
   query issuesQuery($owner: String!, $name: String!) {
     repository(owner: $owner, name: $name) {
-      name
       issues(first: 100, filterBy: { states: OPEN }, orderBy: { direction: ASC, field: CREATED_AT }) {
         nodes {
           id
