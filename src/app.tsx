@@ -4,8 +4,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useMemo } from "react";
 import { RelayEnvironmentProvider } from "react-relay/hooks";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Repositories from "./features/repositories/repositories";
+import Repositories from "./pages/repositories";
+import Issues from "./pages/issues";
 import RelayEnvironment from "./relay-environment";
 
 const App = () => {
@@ -24,7 +26,12 @@ const App = () => {
       <CssBaseline enableColorScheme />
       <RelayEnvironmentProvider environment={RelayEnvironment}>
         <Container component={Box} p={2}>
-          <Repositories />
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Repositories />} />
+              <Route path=":repo" element={<Issues />} />
+            </Routes>
+          </BrowserRouter>
         </Container>
       </RelayEnvironmentProvider>
     </ThemeProvider>

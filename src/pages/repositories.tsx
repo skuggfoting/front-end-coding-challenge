@@ -4,7 +4,7 @@ import { useQueryLoader } from "react-relay/hooks";
 import { graphql } from "relay-runtime";
 
 import { repositoriesQuery } from "./__generated__/repositoriesQuery.graphql";
-import { RepositoryList } from "./repository-list";
+import { RepositoryList } from "../features/repositories/repository-list";
 
 export const RepositoriesQuery = graphql`
   query repositoriesQuery($query: String!, $type: SearchType!) {
@@ -14,8 +14,16 @@ export const RepositoriesQuery = graphql`
           id
           description
           name
-          issues(filterBy: { states: OPEN }) {
+          owner {
+            login
+          }
+          issues(first: 25, filterBy: { states: OPEN }) {
             totalCount
+            nodes {
+              id
+              title
+              createdAt
+            }
           }
         }
       }

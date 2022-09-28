@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 import { PreloadedQuery, usePreloadedQuery } from "react-relay/hooks";
 
-import { repositoriesQuery } from "./__generated__/repositoriesQuery.graphql";
-import { RepositoriesQuery } from "./repositories";
+import { repositoriesQuery } from "../../pages/__generated__/repositoriesQuery.graphql";
+import { RepositoriesQuery } from "../../pages/repositories";
 import { RepositoryListItem } from "./repository-list-item";
 
 interface RepositoryListProps {
@@ -22,6 +22,7 @@ export const RepositoryList = (props: RepositoryListProps) => {
           description={node?.description}
           name={node?.name}
           totalCount={node?.issues?.totalCount}
+          owner={node?.owner?.login}
         />
       ))}
     </Grid>
